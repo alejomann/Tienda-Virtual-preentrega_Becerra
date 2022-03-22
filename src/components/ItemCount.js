@@ -1,11 +1,9 @@
 import React from 'react'
 import { useState } from 'react'
 
-const ItemCount = ({stock,titulo}) => {
+const ItemCount = ({initial,stock,onAdd}) => {
 
-    //let [getter,setter] = useState(valor-inicial)
-    // let [estado,setEstado] = useState(inicial)
-    let [estado,setEstado] = useState(0)
+    let [estado,setEstado] = useState(initial)
 
     //sumo producto
     const clickMenos = () => {
@@ -21,9 +19,9 @@ const ItemCount = ({stock,titulo}) => {
         }
     }
 
-    //agrego al carrito
-    const onAdd = () => {
-        console.log("Agregar al carrito: " + estado + " " + titulo);
+    //agregar al carrito
+    const agregarCarrito = () => {
+        onAdd(estado)
     }
 
     return (
@@ -33,7 +31,7 @@ const ItemCount = ({stock,titulo}) => {
                 <input className='numero' value={estado} disabled></input>
                 <button className='btnSuma' onClick={clickMas}>+</button>
             </div>
-            <button className='btn btn-outline-primary mt-2 w-100 btnAgregar' onClick={onAdd}>Agregar</button>
+            <button className='btn btn-outline-primary mt-2 w-100 btnAgregar' onClick={agregarCarrito}>Agregar</button>
         </div>
     )
 
